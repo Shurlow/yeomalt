@@ -1,0 +1,9 @@
+.ig-placeholder {
+  width: 300px;
+  height: 300px;
+  border: 1px solid grey;
+}
+
+.link:focus {
+  outline: none;
+}
