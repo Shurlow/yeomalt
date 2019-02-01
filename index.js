@@ -15,8 +15,6 @@ function getRecentPosts() {
   fetch(`https://api.instagram.com/v1/users/self/media/recent?access_token=${tempToken}`)
     .then((res) => res.json())
     .then((json) => {
-      console.log(json.data);
-      
       feed.innerHTML = json.data.map(imageCard).join('')
     })
     .catch(console.error)

@@ -6,10 +6,7 @@ function getSelf() {
   fetch(`https://api.instagram.com/v1/users/self/media/recent?access_token=${tempToken}`)
     .then((res) => res.json())
     .then((json) => {
-      console.log(json);
       const bioPost = json.data.find(post => post.tags.includes('yeomalt_bio'))
-      console.log(bioPost);
-      
       bio.textContent = bioPost.caption.text
     })
     .catch(console.error)
