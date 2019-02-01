@@ -1,16 +1,22 @@
-const authPath = 'https://api.instagram.com/oauth/authorize/?client_id=a30dc2a7c4e443a89f1d5ad922b83ee8&redirect_uri=http://localhost:8080/index.html&response_type=token'
-const tempToken = '1371017427.a30dc2a.c086675162e6423ea867073f50f55dd2'
+const clientId = '34fb69bdcab84d76a6da9592085840f3'
+const redirect = 'http://localhost:8080/index.html'
+const authPath = `https://api.instagram.com/oauth/authorize/?client_id=${clientId}&redirect_uri=${redirect}&response_type=token`
+const tempToken = '10682133324.34fb69b.be3a2c0e593d4d6ca637b3ddafd058d4'
 
-const feed = document.querySelector('#ig-feed')
+
 // const button = document.querySelector('.load')
 // button.addEventListener('click', function() {
 //   window.location = authPath
 // })
 
+const feed = document.querySelector('#ig-feed')
+
 function getRecentPosts() {
   fetch(`https://api.instagram.com/v1/users/self/media/recent?access_token=${tempToken}`)
     .then((res) => res.json())
     .then((json) => {
+      console.log(json.data);
+      
       feed.innerHTML = json.data.map(imageCard).join('')
     })
     .catch(console.error)
