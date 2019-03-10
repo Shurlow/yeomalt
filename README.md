@@ -1,7 +1,4 @@
-# yeomalt
-Yemoalt website
+# Yeomalt
+Yemoalt Design website at yeomaltdesign.com
 
-## Contributing
-- Place Instagram and Contentful credentials in a config file
-- Deployed with surge
-
+Deployed with surge
