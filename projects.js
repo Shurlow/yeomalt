@@ -1,32 +1,27 @@
 const spaceId = 'a16bgaeg0u0v'
 const accessToken = 'cbced7be93391e5e2533daac88a3e9d48f22f133a49cefcac629043de3efd9fe'
+const projectListId = '1YV3fafGWHqzSuQirjfZ3l'
 
-const client = contentful.createClient({
-  space: spaceId,
-  accessToken: accessToken
-})
+window.onload = fetchProjects
 
 function fetchProjects() {
-  client.getEntries()
-    .then((response) => {
-      return response.items.map(project => {
+  const client = contentful.createClient({
+    space: spaceId,
+    accessToken: accessToken
+  })
+
+  client.getEntry(projectListId)
+    .then(response => {
+      return response.fields.projectList.map(project => {
         const images = project.fields.images.map(img => {
-          return {
-            title: img.fields.title,
-            url: img.fields.file.url
-          }
+          return { title: img.fields.title, url: img.fields.file.url }
         })
-        return {
-          ...project.fields,
-          images
-        }
+        return { ...project.fields, images }
       })
     })
     .then(makeProjects)
     .catch(console.error)
 }
-
-fetchProjects()
 
 const projectContainer = document.querySelector('#project-container')
 function makeProjects(projects) {
