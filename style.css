@@ -5,12 +5,22 @@
 }
 
 .card {
-  margin: 1em;
-  overflow: hidden;
   width: 300px;
   height: 300px;
 }
 
 .link:focus {
   outline: none;
+}
+
+.project:nth-child(2n) > div:first-child {
+  order: 2;
+}
+
+.project {
+  height: 250px;
+}
+
+.flex-basis {
+  flex-basis: 50%;
 }
