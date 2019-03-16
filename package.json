@@ -1,0 +1,23 @@
+{
+  "name": "yeomalt",
+  "version": "1.0.0",
+  "description": "Yemoalt Design website at yeomaltdesign.com",
+  "main": "src/index.html",
+  "scripts": {
+    "dev": "live-server ./src --mount=/about:src/about.html --mount=/projects:src/projects.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shurlow/yeomalt.git"
+  },
+  "keywords": [],
+  "author": "Scott Hurlow <scott.hurlow@galvanize.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Shurlow/yeomalt/issues"
+  },
+  "homepage": "https://yeomaltdesign.com",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}

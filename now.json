@@ -1,0 +1,28 @@
+{
+  "name": "yeomalt design",
+  "version": 2,
+  "routes": [
+    {
+      "src": "/projects",
+      "dest": "src/projects.html"
+    },
+    {
+      "src": "/about",
+      "dest": "src/about.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "src/$1"
+    }
+  ],
+  "builds": [
+    {
+      "src": "./src/**",
+      "use": "@now/static"
+    },
+    {
+      "src": "api.js",
+      "use": "@now/node"
+    }
+  ]
+}
