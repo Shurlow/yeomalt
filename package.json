@@ -4,7 +4,9 @@
   "description": "Yemoalt Design website at yeomaltdesign.com",
   "main": "src/index.html",
   "scripts": {
-    "dev": "live-server ./src --mount=/about:src/about.html --mount=/projects:src/projects.html"
+    "start": "npm run server & npm run static",
+    "server": "nodemon www.js",
+    "static": "live-server ./src --mount=/about:src/about.html --mount=/projects:src/projects.html"
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,13 @@
   },
   "homepage": "https://yeomaltdesign.com",
   "devDependencies": {
-    "live-server": "^1.2.1"
+    "dotenv": "^7.0.0",
+    "live-server": "^1.2.1",
+    "puppeteer": "^1.13.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "chrome-aws-lambda": "^1.13.0",
+    "puppeteer-core": "^1.13.0"
   }
 }
