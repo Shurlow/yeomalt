@@ -30,17 +30,17 @@ function makeProjects(projects) {
 
 function projectCard({ title, description, location, images }) {
   return `
-    <article class='project flex'>
-      <div class="flex-basis pa3 pa3-ns bg-white black-70 f4 times">
-        <header class="bb b--black-70 pv3">
-          <h3 class="f3 fw7 ttu tracked lh-title mt0 mb3 avenir">${title}</h3>
-          <h4 class="f4 fw4 i lh-title mt0">${location}</h4>
+    <article class='project mb1 flex'>
+      <div class="flex-basis ma4 bg-white black-70 f4 times">
+        <header class=" pt3">
+          <h3 class="f4 fw6 ttu tracked lh-title mt0 mb2 avenir">${title}</h3>
+          <h4 class="f5 fw4 i lh-title ma0">${location}</h4>
         </header>
-        <section class="pt4">
+        <section class="mt1">
           <p class="times lh-copy measure f5 mt0">${description}</p>
         </section>
       </div>
-      <div class='flex-basis' style="background: url(${images[0].url}) no-repeat center center; background-size: cover;"></div>
+      <div class='flex-basis mv4 mh2' style="background: url(${images[0].url}) no-repeat center center; background-size: cover;"></div>
     </article>
   `
 }

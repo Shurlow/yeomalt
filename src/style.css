@@ -1,16 +1,62 @@
-.ig-placeholder {
-  width: 300px;
-  height: 300px;
+h1 {
+  font-family: 'EB Garamond', serif;
+  line-height: 30px;
+}
+
+/* h4 {
+  font-family: 'EB Garamond', serif;
+} */
+
+.anchor {
+  height: 3px;
+  width: 100%;
+}
+
+.yellow {
+  color: #F7CE2F;
+}
+
+.yellow-line {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  border: 1.5px solid #F7CE2F;
+  margin: 0;
+}
+
+.y-link {
+  line-height: 20px;
+}
+
+.y-link:hover, .y-link:active {
+  background: #F7CE2F;
+  outline: 6px solid #F7CE2F;
+}
+
+.border {
   border: 1px solid grey;
 }
 
 .card {
-  width: 300px;
-  height: 300px;
+  overflow: hidden;
+  height: 0;
+  padding: 50%;
+  /* background-image: url("https://making-the-web.com/sites/default/files/clipart/158165/images-fishes-158165-3297385.jpg"); */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.link:focus {
-  outline: none;
+@media screen and (min-width: 30em) {
+  .card {
+    padding: 24%;
+  }
+}
+
+@media screen and (min-width: 60em) {
+  .card {
+    padding: 11%;
+  }
 }
 
 .project:nth-child(2n) > div:first-child {
@@ -18,7 +64,7 @@
 }
 
 .project {
-  height: 250px;
+  min-height: 400px;
 }
 
 .flex-basis {

@@ -1,19 +1,29 @@
-const { IG_CLIENT_ID, IG_REDIRECT } = process.env
-const authPath = `https://api.instagram.com/oauth/authorize/?client_id=${IG_CLIENT_ID}&redirect_uri=${IG_REDIRECT}&response_type=token`
+const url = require('url');
 const axios = require('axios')
-const getToken = require('./getToken')
+const instagramPath = 'https://api.instagram.com/v1/users/self/media/recent?access_token='
 
-async function getPosts(req, res) {
+module.exports = async function getPosts(req, res) {
+  // const url = `${req.headers['x-forwarded-proto'] || 'http'}://${req.headers.host}${req.url}`
+  // const url = `https://yeomalt.now.sh/api`
+  const url = `http://localhost:3000/api`
+  // console.log('Running index route', url);
+  
   try {
-    const access_token = await getToken(authPath)
-    const { data } = await axios(`https://api.instagram.com/v1/users/self/media/recent?access_token=${access_token}`)
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify(data.data))    
+    const { data } = await axios(`${url}/token`)    
+    const posts = await axios(instagramPath + data.access_token)
+    res.setHeader('Content-Type', 'application/json')
+    return res.end(JSON.stringify(posts.data.data))
   } catch (error) {
-    console.error(error);
-    res.statusCode = 500
-    res.end()
+    console.error(error.message)
   }
-};
 
-module.exports = getPosts
+  try {
+    console.log('-- deleting token --');
+    await axios.delete(`${url}/token`)
+  } catch (error) {
+    console.error(error.message);
+  } finally {
+    res.statusCode = 500
+    res.end('Internal error. Try again.')
+  }
+}
