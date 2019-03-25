@@ -4,9 +4,7 @@
   "description": "Yemoalt Design website at yeomaltdesign.com",
   "main": "src/index.html",
   "scripts": {
-    "start": "npm run server & npm run static",
-    "server": "nodemon www.js",
-    "static": "live-server ./src --mount=/about:src/about.html --mount=/projects:src/projects.html"
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -21,15 +19,14 @@
   "homepage": "https://yeomaltdesign.com",
   "devDependencies": {
     "dotenv": "^7.0.0",
-    "live-server": "^1.2.1",
-    "puppeteer": "^1.13.0"
+    "nodemon": "^1.18.10",
+    "puppeteer": "^1.13.0",
+    "serve-handler": "^5.0.8"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "chrome-aws-lambda": "^1.13.0",
-    "express": "^4.16.4",
     "micro": "^9.3.3",
-    "puppeteer-core": "^1.13.0",
-    "serve-handler": "^5.0.8"
+    "puppeteer-core": "^1.13.0"
   }
 }
