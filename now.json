@@ -50,6 +50,7 @@
     "IG_CLIENT_SECRET": "@ig-client-secret",
     "IG_REDIRECT": "@ig-redirect",
     "IG_USERNAME": "@ig-username",
-    "IG_PASSWORD": "@ig-password"
+    "IG_PASSWORD": "@ig-password",
+    "BASE_URL": "@base-url"
   }
 }

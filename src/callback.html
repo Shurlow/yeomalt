@@ -5,7 +5,13 @@
   <title>Hello Redirect</title>
   <script>
     const access_token = window.location.hash.split('=')[1]
-    fetch(`/api/login?access_token=${access_token}`)
+    fetch('/api/token', {
+        method: 'POST',
+        body: JSON.stringify({ access_token }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
       .then(res => console.log)
       .catch(console.error)
   </script>

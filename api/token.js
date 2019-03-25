@@ -1,66 +1,47 @@
-const fs = require('fs')
-const { promisify } = require('util')
-const readFile = promisify(fs.readFile)
-const writeFile = promisify(fs.writeFile)
-const removeFile = promisify(fs.unlink)
-const axios = require('axios')
-const tokenPath = process.env.NODE_ENV === 'production' ? '/tmp/token.txt' : './token.txt'
-let access_token = null
+const { send, json, sendError } = require('micro')
+const { NODE_ENV, BASE_URL } = process.env
+const tokenPath = NODE_ENV === 'production' ? '/tmp/token.txt' : './token.txt'
+const Token = require('../util/Token')
+const AccessToken = new Token(tokenPath, BASE_URL)
+
+const methods = {
+  'GET': get,
+  'POST': post,
+  'DELETE': del
+}
+
+// -- TOKEN CONTROLLERS --
+
+async function get(req, res) {
+  const token = await AccessToken.get(req)
+  send(res, 200, { access_token: token })
+}
+
+async function post(req, res) {
+  let { access_token } = await json(req)
+  console.log('Got token', access_token);
+
+  await AccessToken.set(access_token)
+  send(res, 200, { access_token })
+}
+
+async function del(req, res) {
+  await AccessToken.del()
+  send(res, 200)
+}
+
+// -- Lambda Route --
 
 module.exports = async function token(req, res) {
-  
-  // Handle token delete
-  if (req.method === 'DELETE') {
-    console.log('Handle DELETE token')
-    try {
-      await clearToken()
-      return res.end('Token deleted.')
-    } catch (error) {
-      res.statusCode = 500
-      return res.end('Error deleting token...')
-    }
-  }
 
-  try {
-    const token = await getToken(req)
-    await setToken(token)
-    res.setHeader('Content-Type', 'application/json')
-    res.end(JSON.stringify({ access_token }))
-  } catch (error) {
-    console.error('Error getting token', error.message)
-    res.statusCode = 500
-    res.end()
-  }
-}
+  const method = methods[req.method]
+  if(!method) return sendError(res, 404)
 
-async function getToken(req) {
-  // Use token in memory
-  if (access_token) return access_token
-  
-  // Read token from file
-  try {
-    const token = await readFile(tokenPath, 'utf8')
-    return token
-  } catch (error) {
-    console.error(error.message)
-  }
-
-  // Scrape token with oauth flow
   try {    
-    const { data } = await axios(`https://${req.headers.host}/api/scrape`)
-    return data.access_token
+    await method(req, res)
   } catch (error) {
-    console.error(error.message)
-    throw error
+    console.log('Caught token method error', error);
+    sendError(req, res, error)
   }
-}
-
-function setToken(token) {
-  access_token = token
-  return writeFile(tokenPath, token, 'utf8')
-}
-
-function clearToken() {
-  access_token = null
-  return removeFile(tokenPath)
+  
 }

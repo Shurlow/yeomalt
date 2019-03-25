@@ -5,43 +5,70 @@ const readFile = promisify(fs.readFile)
 const http = require('http');
 const url = require('url');
 require('dotenv').config()
+// require('dotenv').config({ path: './.env.prod' }) // test with prod env
 
-const express = require('express')
-const app = express()
-
-const asyncRoute = route => (req, res) => {
-  Promise.resolve(route(req, res)).catch(console.error)
-}
-
-app.use(express.static('src'))
+const micro = require('micro')
+const handler = require('serve-handler');
 
 const index = require('./api/index')
 const token = require('./api/token')
 const scrape = require('./api/scrape')
 const login = require('./api/login')
 
-app.use('/api/token', asyncRoute(token))
-app.use('/api/scrape', asyncRoute(scrape))
-app.use('/api/login', asyncRoute(login))
-app.use('/api', asyncRoute(index))
+const routes = {
+  // '/': files,
+  '/api': index,
+  '/api/token': token,
+  '/api/scrape': scrape,
+  '/api/login': login,
+}
 
-app.get('/:filename', (req, res, next) => {
-  console.log(`${__dirname}/src/${req.params.filename}.html`);
+const server = micro(async (req, res) => {
+  const route = routes[req.url]
+  if(route) return await route(req, res)
+  return handler(req, res, {
+    public: 'src'
+  })
+})
+
+server.listen(3000)
+
+// const express = require('express')
+// const app = express()
+
+// const asyncRoute = route => (req, res) => {
+//   Promise.resolve(route(req, res)).catch(console.error)
+// }
+
+// app.use(express.static('src'))
+
+// const index = require('./api/index')
+// const token = require('./api/token')
+// const scrape = require('./api/scrape')
+// const login = require('./api/login')
+
+// app.use('/api/token', asyncRoute(token))
+// app.use('/api/scrape', asyncRoute(scrape))
+// app.use('/api/login', asyncRoute(login))
+// app.use('/api', asyncRoute(index))
+
+// app.get('/:filename', (req, res, next) => {
+//   console.log(`${__dirname}/src/${req.params.filename}.html`);
   
-  res.sendFile(`${__dirname}/src/${req.params.filename}.html`)
-})
+//   res.sendFile(`${__dirname}/src/${req.params.filename}.html`)
+// })
 
 
-app.use((req, res, next) => {
-  res.sendStatus(404)
-})
+// app.use((req, res, next) => {
+//   res.sendStatus(404)
+// })
 
-app.use((err, req, res, next) => {
-  console.error(err);
-  res.sendStatus(500)
-})
+// app.use((err, req, res, next) => {
+//   console.error(err);
+//   res.sendStatus(500)
+// })
 
-app.listen(3000)
+// app.listen(3000)
 
 
 
