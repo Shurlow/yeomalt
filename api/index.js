@@ -5,8 +5,6 @@ const instagramPath = 'https://api.instagram.com/v1/users/self/media/recent?acce
 const { send } = require('micro')
 
 module.exports = async function getPosts(req, res) {
-  console.log('Running index route');
-
   try {
     const { data } = await axios(`${BASE_URL}/token`)
     const posts = await axios(instagramPath + data.access_token)

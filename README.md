@@ -29,3 +29,10 @@ The following secrets must be set on now for the api:
 * ig-redirect
 * ig-username
 * ig-password
+
+### TODO:
+
+- make Yeomalt a link
+- move contentful keys somewhere
+- fix nav links on mobile
+- deafult work page boxes on load

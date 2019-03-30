@@ -18,9 +18,7 @@ const routes = {
 const server = micro(async (req, res) => {
   const route = routes[req.url]
   if(route) return await route(req, res)
-  return handler(req, res, {
-    public: 'src'
-  })
+  return handler(req, res, { public: 'src' })
 })
 
 server.listen(3000)
