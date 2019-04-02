@@ -1,13 +1,14 @@
-const url = require('url');
 const axios = require('axios')
-const { BASE_URL } = process.env
+const { BASE_URL, ACCESS_TOKEN } = process.env
 const instagramPath = 'https://api.instagram.com/v1/users/self/media/recent?access_token='
-const { send } = require('micro')
+const { send, sendError } = require('micro')
 
 module.exports = async function getPosts(req, res) {
+
   try {
-    const { data } = await axios(`${BASE_URL}/token`)
-    const posts = await axios(instagramPath + data.access_token)
+    const token = ACCESS_TOKEN || (await axios(`${BASE_URL}/token`)).data.access_token
+    const posts = await axios(instagramPath + token)
+    res.setHeader('Cache-Control', 's-maxage=900')
     return send(res, 200, posts.data.data)
   } catch (error) {
     console.error('TOKEN ERROR HERE', error.message)
@@ -15,11 +16,10 @@ module.exports = async function getPosts(req, res) {
 
   try {
     console.log('-- deleting token --');
-    await axios.delete(`${url}/token`)
+    await axios.delete(`${BASE_URL}/token`)
   } catch (error) {
     console.error(error.message);
   } finally {
-    res.statusCode = 500
-    res.end('Internal error. Try again.')
+    sendError(res, 500, 'Internal server error. Try again.')
   }
 }

@@ -26,6 +26,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "chrome-aws-lambda": "^1.13.0",
+    "contentful": "^7.5.0",
     "micro": "^9.3.3",
     "puppeteer-core": "^1.13.0"
   }

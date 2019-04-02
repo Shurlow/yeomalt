@@ -1,24 +1,9 @@
-const spaceId = 'a16bgaeg0u0v'
-const accessToken = 'cbced7be93391e5e2533daac88a3e9d48f22f133a49cefcac629043de3efd9fe'
-const projectListId = '1YV3fafGWHqzSuQirjfZ3l'
 
 window.onload = fetchProjects
 
 function fetchProjects() {
-  const client = contentful.createClient({
-    space: spaceId,
-    accessToken: accessToken
-  })
-
-  client.getEntry(projectListId)
-    .then(response => {
-      return response.fields.projectList.map(project => {
-        const images = project.fields.images.map(img => {
-          return { title: img.fields.title, url: img.fields.file.url }
-        })
-        return { ...project.fields, images }
-      })
-    })
+  fetch('/api/projects')
+    .then(res => res.json())
     .then(makeProjects)
     .catch(console.error)
 }
@@ -33,7 +18,6 @@ function projectCard({ title, description, location, images }) {
   return `
     <article class="project mb4 flex-l justify-center items-center">
       <img class="w-100 w-50-l" src="${images[0].url}"/>
-      
       <div class="flex-basis pa4-l bg-white black-70 f4 times">
         <header class=" pt3">
           <h3 class="f4 fw6 ttu tracked lh-title mt0 mb1 avenir">${title}</h3>

@@ -4,13 +4,7 @@ const tokenPath = NODE_ENV === 'production' ? '/tmp/token.txt' : './token.txt'
 const Token = require('../util/Token')
 const AccessToken = new Token(tokenPath, BASE_URL)
 
-const methods = {
-  'GET': get,
-  'POST': post,
-  'DELETE': del
-}
-
-// -- TOKEN CONTROLLERS --
+// --- TOKEN CONTROLLERS ---
 
 async function get(req, res) {
   const token = await AccessToken.get(req)
@@ -27,13 +21,19 @@ async function post(req, res) {
 
 async function del(req, res) {
   await AccessToken.del()
-  send(res, 200)
+  send(res, 200, 'Token deleted.')
 }
 
-// -- Lambda Route --
+// --- Lambda Routes ---
+
+const methods = {
+  'GET': get,
+  'POST': post,
+  'DELETE': del
+}
 
 module.exports = async function token(req, res) {
-
+  
   const method = methods[req.method]
   if(!method) return sendError(res, 404)
 

@@ -7,12 +7,14 @@ const index = require('./api/index')
 const token = require('./api/token')
 const scrape = require('./api/scrape')
 const login = require('./api/login')
+const projects = require('./api/projects')
 
 const routes = {
   '/api': index,
   '/api/token': token,
   '/api/scrape': scrape,
   '/api/login': login,
+  '/api/projects': projects
 }
 
 const server = micro(async (req, res) => {

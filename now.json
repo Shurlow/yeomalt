@@ -38,6 +38,10 @@
       "use": "@now/node"
     },
     {
+      "src": "./api/projects.js",
+      "use": "@now/node"
+    },
+    {
       "src": "./api/scrape.js",
       "use": "@now/node",
       "config": {
@@ -51,6 +55,9 @@
     "IG_REDIRECT": "@ig-redirect",
     "IG_USERNAME": "@ig-username",
     "IG_PASSWORD": "@ig-password",
-    "BASE_URL": "@base-url"
+    "BASE_URL": "@base-url",
+    "ACCESS_TOKEN": "@access-token",
+    "ZEIT_KEY": "@zeit-key",
+    "CONTENTFUL_TOKEN": "@contentful-token"
   }
 }

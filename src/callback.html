@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Hello Redirect</title>
   <script>
-    const access_token = window.location.hash.split('=')[1]
+    const access_token = window.location.hash.split('=')[1]    
     fetch('/api/token', {
         method: 'POST',
         body: JSON.stringify({ access_token }),
