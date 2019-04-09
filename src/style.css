@@ -5,7 +5,12 @@ h1 {
   line-height: 30px;
 }
 
-.anchor {
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.line-anchor {
   height: 4px;
   width: 100%;
 }

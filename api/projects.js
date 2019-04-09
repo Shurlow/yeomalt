@@ -23,7 +23,7 @@ module.exports = async function getProjects(req, res) {
     const response = await client.getEntry(projectListId)
     const projects = formatProjects(response)
     res.setHeader('Cache-Control', 's-maxage=900')
-    return send(res, 200, projects)
+    send(res, 200, projects)
   } catch (error) {
     console.error('Contentful Error', error.message)
     sendError(res, 500)
