@@ -1,5 +1,6 @@
 # Yeomalt
-Yemoalt Design website at [yeomaltdesign.com]()
+
+Yemoalt Design website at [yeomaltdesign.com](yeomaltdesign.com)
 
 Hosted with [https://zeit.co/now](now)
 
@@ -7,18 +8,18 @@ Hosted with [https://zeit.co/now](now)
 
 Install dev dependencies to serve static files in `/src` and spin-up lambdas:
 
-```
+```bash
 npm i
 npm run dev
 ```
 
 Use `curl` to test lambdas separately:
 
-```
+```bash
 curl localhost:3000/api
 ```
 
-#### Routes:
+#### Routes
 
 - `/api`
 - `/api/token`
@@ -30,7 +31,7 @@ Use the `now` cli to deploy.
 
 The secrets listed in `now.json` must be loaded to deploy. Run `node util/loadEnvSecrets.js` to upload `.env.prod` variables as now secrets.
 
-### TODO:
+### TODO
 
 - make Yeomalt a link
 - fix nav links on mobile
