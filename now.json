@@ -1,63 +1,24 @@
 {
-  "name": "yeomalt",
   "version": 2,
-  "alias": ["yeomalt.now.sh"],
-  "routes": [
-    {
-      "src": "/projects",
-      "dest": "src/projects.html"
-    },
-    {
-      "src": "/about",
-      "dest": "src/about.html"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "api/$1.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "src/$1"
-    }
-  ],
+  "name": "example-company-website-gatsby-sanity-combo",
   "builds": [
     {
-      "src": "./src/**",
-      "use": "@now/static"
+      "src": "web/package.json",
+      "use": "@now/static-build",
+      "config": { "distDir": "public" }
     },
     {
-      "src": "./api/index.js",
-      "use": "@now/node"
-    },
-    {
-      "src": "./api/login.js",
-      "use": "@now/node"
-    },
-    {
-      "src": "./api/token.js",
-      "use": "@now/node"
-    },
-    {
-      "src": "./api/projects.js",
-      "use": "@now/node"
-    },
-    {
-      "src": "./api/scrape.js",
-      "use": "@now/node",
-      "config": {
-        "maxLambdaSize": "50mb"
-      }
+      "src": "studio/package.json",
+      "use": "@now/static-build",
+      "config":  { "distDir": "dist" }
     }
   ],
-  "env" : {
-    "IG_CLIENT_ID": "@ig-client-id",
-    "IG_CLIENT_SECRET": "@ig-client-secret",
-    "IG_REDIRECT": "@ig-redirect",
-    "IG_USERNAME": "@ig-username",
-    "IG_PASSWORD": "@ig-password",
-    "BASE_URL": "@base-url",
-    "ACCESS_TOKEN": "@access-token",
-    "ZEIT_KEY": "@zeit-key",
-    "CONTENTFUL_TOKEN": "@contentful-token"
-  }
+  "routes": [
+    { "src": "^/studio/static/(.*)", "dest": "/studio/static/$1" },
+    { "src": "^/studio/(.*)", "dest": "/studio/index.html" },
+    {
+      "src": "/(.*)", "dest": "/web/$1"
+    }
+  ],
+  "alias": ["example-company-website-gatsby-sanity-combo.now.sh"]
 }
