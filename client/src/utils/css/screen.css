@@ -258,6 +258,22 @@ body {
 /* Mobile Nav Menu
 /* ---------------------------------------------------------- */
 
+/* use .clear-button to remove default browser button styling */
+.clear-button {
+  box-shadow: none;
+  padding: 0;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.clear-button:hover {
+  box-shadow: none;
+}
+
+.clear-button:focus {
+  outline: none;
+}
+
 .nav-burger {
   display: none;
   position: absolute;
@@ -384,7 +400,7 @@ body {
 
 .post-feed {
   display: flex;
-  align-items: ;
+  align-items: center;
   flex-wrap: wrap;
 }
 
@@ -449,7 +465,7 @@ body {
 .post-card-title {
   margin: 0;
   display: inline-block;
-  font-size: 3.4rem;
+  font-size: 2.4rem;
   max-width: 70%;
   text-align: center;
   transition: all 0.3s cubic-bezier(0.33, 0, 0.2, 1);
