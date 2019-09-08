@@ -34,8 +34,8 @@ module.exports = {
     //   }
     // }
     // {
-    // `gatsby-transformer-sharp`,
-    // `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-postcss`,
       options: {
@@ -43,7 +43,7 @@ module.exports = {
           require("postcss-easy-import")(),
           require("postcss-custom-properties")({ preserve: false }),
           require("postcss-color-function")(),
-          require("autoprefixer")({ browsers: ["last 2 versions"] }),
+          require("autoprefixer")(),
         ],
       },
     },
@@ -79,7 +79,7 @@ module.exports = {
     {
       resolve: `gatsby-source-instagram`,
       options: {
-        username: `username`,
+        username: "yeomalt",
       },
     },
     `gatsby-plugin-netlify`,

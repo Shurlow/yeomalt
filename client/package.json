@@ -24,8 +24,9 @@
     "gatsby-plugin-postcss": "^2.0.7",
     "gatsby-plugin-purgecss": "^3.1.1",
     "gatsby-plugin-react-helmet": "^3.0.12",
-    "gatsby-plugin-sharp": "^2.0.36",
+    "gatsby-plugin-sharp": "^2.2.20",
     "gatsby-source-instagram": "^0.5.1",
+    "gatsby-transformer-sharp": "^2.2.13",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
@@ -47,5 +48,8 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
-  }
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
 }
