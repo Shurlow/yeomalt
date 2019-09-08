@@ -1,8 +1,8 @@
 {
   "private": false,
-  "name": "example-company-website-gatsby-sanity-combo-studio",
+  "name": "yeomalt-studio",
   "version": "1.0.0",
-  "author": "Sanity <hello@sanity.io>",
+  "author": "Scott Hurlow",
   "scripts": {
     "deploy": "npm run graphql-deploy && npm run sanity-deploy",
     "format": "prettier-eslint --write \"**/*.js\" \"!node_modules/**\"",
