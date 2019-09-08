@@ -9,30 +9,20 @@ import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 
-function Bio() {
-  return (
-    <StaticQuery
-      query={bioQuery}
-      render={data => {
-        const { author } = data.site.siteMetadata
-        return (
-          <section>
-            <Image
-              fixed={data.avatar.childImageSharp.fixed}
-              alt={author}
-              imgStyle={{
-                borderRadius: `50%`,
-              }}
-            />
-            <p>
-              Written by <strong>{author}</strong>
-            </p>
-          </section>
-        )
+const Bio = ({ author }) => (
+  <section>
+    <Image
+      fixed={""}
+      alt={author}
+      imgStyle={{
+        borderRadius: `50%`,
       }}
     />
-  )
-}
+    <p>
+      Written by <strong>{author}</strong>
+    </p>
+  </section>
+)
 
 const bioQuery = graphql`
   query BioQuery {
@@ -44,4 +34,9 @@ const bioQuery = graphql`
   }
 `
 
-export default Bio
+export default props => (
+  <StaticQuery
+    query={bioQuery}
+    render={data => <Bio author={data.site.siteMetadata} {...props} />}
+  />
+)
