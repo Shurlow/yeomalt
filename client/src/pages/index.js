@@ -12,22 +12,18 @@ const hashtagRegEx = /\B(#[a-zA-Z0-9]+\b|\.)(?!;)/g
 
 //TODO: switch to staticQuery, get rid of comments, remove unnecessary components, export as draft template
 const Main = ({ data }, location) => {
-  const siteTitle = data.site.siteMetadata.title
+  const { title, description } = data.site.siteMetadata
   const images = data.allInstaNode.edges
-  console.log(images)
-  console.log(images[0].node.caption.replace(hashtagRegEx, " "))
+  // console.log(images)
+  // console.log(images[0].node.caption.replace(hashtagRegEx, " "))
 
   return (
-    <Layout title={siteTitle}>
+    <Layout>
       <SEO title="All posts" />
       {/* <Bio /> */}
-      {data.site.siteMetadata.description && (
-        <header className="page-head">
-          <h2 className="page-head-title">
-            {data.site.siteMetadata.description}
-          </h2>
-        </header>
-      )}
+      <header className="page-head">
+        <h2 className="page-head-title">{title || description}</h2>
+      </header>
       <div className="post-feed">
         {images.map((image, i) => {
           return (
@@ -53,9 +49,10 @@ const indexQuery = graphql`
       siteMetadata {
         title
         description
+        shortName
       }
     }
-    allInstaNode {
+    allInstaNode(sort: { fields: [timestamp], order: DESC }) {
       edges {
         node {
           id

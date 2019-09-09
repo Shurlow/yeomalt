@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql, StaticQuery } from "gatsby"
-import Img from "gatsby-image"
+// import Img from "gatsby-image"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
@@ -17,34 +17,34 @@ const AboutPage = ({ data }, location) => {
 
       <article className="post-content page-template no-image">
         <div className="post-content-body">
-          <h2 id="clean-minimal-and-deeply-customisable-london-is-a-theme-made-for-people-who-appreciate-simple-lines-">
-            Clean, minimal, and deeply customisable. London is a theme made for
-            people who appreciate simple lines.
+          <h2>
+            Yeomalt is a design studio located in Bellingham, Washington
+            specializing in design process, and metal fabrication.
           </h2>
           <figure className="kg-card kg-image-card kg-width-full">
-            <Img fluid={""} className="kg-image" />
-            <figcaption>Large imagery is at the heart of this theme</figcaption>
+            <img
+              src={"https://media.giphy.com/media/4No3LjxxOrhEjuTI4G/giphy.gif"}
+              className="kg-image"
+            />
+            <figcaption>
+              Observation Structure @ Arcadia Wildlife Sanctuary | Easthampton,
+              MA
+            </figcaption>
           </figure>
-          <h3 id="dynamic-styles">Dynamic styles</h3>
+          <h3 id="dynamic-styles">Custom Metal</h3>
           <p>
-            London comes with photo-centric main layout best suited to
-            photography, graphics portfolios and other image-heavy uses.
+            Billions upon billions a mote of dust suspended in a sunbeam radio
+            telescope a billion trillion vanquish the impossible courage of our
+            questions. Emerged into consciousness Apollonius of Perga with
+            pretty stories for which there's little good evidence take root and
+            flourish extraordinary claims require extraordinary evidence
+            citizens of distant epochs.
           </p>
           <p>
-            Both post and page templates are light and minimal, with all the
-            focus on the content while the design of the theme gets out of the
-            way. Beneath the hood, London enjoys the full power of the{" "}
-            <a href="https://docs.ghost.org/api/handlebars-themes/">
-              Ghost Handlebars Theme API
-            </a>{" "}
-            to provide limitless customisation options and dynamic styles.
-          </p>
-          <p>
-            Don't forget to check out the{" "}
-            <a href="https://docs.ghost.org/integrations/">
-              Ghost Integrations Directory
-            </a>{" "}
-            for more ways to integrate Ghost with your favourite services.
+            Made in the interiors of collapsing stars take root and flourish
+            extraordinary claims require extraordinary evidence descended from
+            astronomers great turbulent clouds two ghostly white figures in
+            coveralls and helmets are soflty dancing and billions upon billions.
           </p>
         </div>
       </article>
