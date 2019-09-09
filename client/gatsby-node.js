@@ -4,73 +4,60 @@ const path = require(`path`)
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
-  // const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  // return graphql(
-  //   `
-  //     query {
-  //       allInstaNode {
-  //         edges {
-  //           node {
-  //             id
-  //             mediaType
-  //             preview
-  //             original
-  //             caption
-  //             localFile {
-  //               childImageSharp {
-  //                 fixed(width: 400) {
-  //                   base64
-  //                   width
-  //                   height
-  //                   src
-  //                   srcSet
-  //                 }
-  //               }
-  //             }
-  //             # Only available with the public api scraper
-  //             thumbnails {
-  //               src
-  //               config_width
-  //               config_height
-  //             }
-  //             dimensions {
-  //               height
-  //               width
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   `
-  // )
-  //   .then(result => {
-  //     if (result.errors) {
-  //       throw result.errors
-  //     }
+  const ProjectPage = path.resolve(`./src/components/ProjectPage.js`)
 
-  //     // Create blog posts pages.
-  //     const posts = result.data.allInstaNode.edges
+  return graphql(`
+    query {
+      allSanityProject {
+        edges {
+          node {
+            id
+            title
+            date
+            image {
+              asset {
+                url
+              }
+            }
+            body {
+              _key
+              _type
+              style
+              list
+            }
+          }
+        }
+      }
+    }
+  `)
+    .then(result => {
+      if (result.errors) {
+        throw result.errors
+      }
 
-  //     // posts.forEach((post, index) => {
-  //     //   const previous = index === posts.length - 1 ? null : posts[index + 1].node
-  //     //   const next = index === 0 ? null : posts[index - 1].node
+      const projects = result.data.allSanityProject.edges
 
-  //     //   createPage({
-  //     //     path: post.node.fields.slug,
-  //     //     component: blogPost,
-  //     //     context: {
-  //     //       slug: post.node.fields.slug,
-  //     //       previous,
-  //     //       next,
-  //     //     },
-  //     //   })
-  //     // })
+      projects.forEach((project, index) => {
+        const previous =
+          index === projects.length - 1 ? null : projects[index + 1].node
+        const next = index === 0 ? null : projects[index - 1].node
 
-  //     //   return null
-  //   })
-  //   .catch(err => {
-  //     console.error("BIG ERROR!", err)
-  //   })
+        const path = project.node.title.toLowerCase().replace(/%20| /g, "-")
+
+        createPage({
+          path,
+          component: ProjectPage,
+          context: {
+            id: project.node.id,
+            previous,
+            next,
+          },
+        })
+      })
+    })
+    .catch(err => {
+      console.error("BIG ERROR!", err)
+    })
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

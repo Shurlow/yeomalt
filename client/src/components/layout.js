@@ -46,7 +46,7 @@ const Header = ({ name, toggleNav, setToggleNav }) => (
       </nav>
       <div className="site-head-center">
         <Link className="site-head-logo" to={`/`}>
-          {name}
+          <span className="site-head-header">{name}</span>
         </Link>
       </div>
       <div className="site-head-right">

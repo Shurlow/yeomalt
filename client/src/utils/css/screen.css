@@ -64,6 +64,7 @@ body {
   justify-content: center;
   padding: 13vw 0;
   max-width: 70%;
+  min-height: 350px;
   margin: auto;
   text-align: center;
 }
@@ -152,6 +153,12 @@ body {
   white-space: nowrap;
 }
 
+/* .site-head h1 { */
+/* font-size: 24px;
+  font-family: "Sorts Mill Goudy";
+  margin: 0; */
+/* } */
+
 .nav {
   display: flex;
   margin: 0 0 0 -12px;
@@ -193,10 +200,11 @@ body {
   display: block;
   padding: 10px;
   color: var(--color-base);
-  font-size: 2.1rem;
-  line-height: 1em;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-size: 3rem;
+  line-height: 26px;
+  font-family: "Sorts Mill Goudy";
+  /* font-weight: 700; */
+  /* text-transform: uppercase; */
   letter-spacing: 1px;
 }
 
@@ -380,7 +388,7 @@ body {
     transform: scale(1) translateY(0px);
   }
   .site-head-open .nav-current a {
-    border-bottom: var(--color-base) 2px solid;
+    border-bottom: var(--color-primary) 2px solid;
   }
   .site-head-open .site-head-right a {
     opacity: 0.5;
@@ -518,7 +526,7 @@ body {
 .post-content {
   max-width: 720px;
   margin: 0 auto;
-  padding: 6vw 0;
+  padding-bottom: 6vw;
 }
 
 .post-content-header {
@@ -664,6 +672,17 @@ body {
   box-shadow: #fff 0 0 0 5px;
   transform: rotate(45deg);
 }
+
+/* .flex-projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.flex-projects .kg-card {
+  max-width: 220px;
+  margin: 0 1em;
+} */
 
 .footnotes-sep {
   margin-bottom: 30px;
