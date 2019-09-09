@@ -23,20 +23,24 @@ const Header = ({ name, toggleNav, setToggleNav }) => (
       <nav id="swup" className="site-head-left">
         <ul className="nav" role="menu">
           <li
-            className={`${window.location.pathname === "/" && "nav-current"}`}
+            className={`${typeof window !== `undefined` &&
+              window.location.pathname === "/" &&
+              "nav-current"}`}
             role="menuitem"
           >
             <Link to={`/`}>Home</Link>
           </li>
           <li
-            className={`${window.location.pathname === "/about" &&
+            className={`${typeof window !== `undefined` &&
+              window.location.pathname === "/about" &&
               "nav-current"}`}
             role="menuitem"
           >
             <Link to={`/about`}>About</Link>
           </li>
           <li
-            className={`${window.location.pathname === "/projects" &&
+            className={`${typeof window !== `undefined` &&
+              window.location.pathname === "/projects" &&
               "nav-current"}`}
             role="menuitem"
           >

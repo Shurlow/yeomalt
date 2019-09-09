@@ -20,13 +20,16 @@
     "@sanity/cli": "^0.142.2",
     "@sanity/components": "^0.142.4",
     "@sanity/core": "^0.142.4",
+    "@sanity/dashboard": "^0.142.2",
     "@sanity/default-layout": "^0.142.4",
     "@sanity/default-login": "^0.142.3",
     "@sanity/desk-tool": "^0.142.4",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-icons": "^3.7.0"
+    "react-icons": "^3.7.0",
+    "sanity-plugin-dashboard-widget-document-list": "0.0.8",
+    "sanity-plugin-dashboard-widget-netlify": "^1.0.1"
   },
   "devDependencies": {
     "eslint": "^5.16.0",

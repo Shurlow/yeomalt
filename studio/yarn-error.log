@@ -1,0 +1,80 @@
+Arguments: 
+  /usr/local/Cellar/node/11.6.0/bin/node /usr/local/lib/node_modules/@sanity/cli/vendor/yarn add sanity-plugin-dashboard-widget-structure-menu --json --non-interactive --ignore-engines --registry https://registry.npmjs.org
+
+PATH: 
+  /Users/shurlow/code/yeomalt/studio/node_modules/.bin:/Users/shurlow/code/yeomalt/node_modules/.bin:/Users/shurlow/code/node_modules/.bin:/Users/shurlow/node_modules/.bin:/Users/node_modules/.bin:/node_modules/.bin:/usr/local/Cellar/node/11.6.0/bin:/usr/local/lib/node_modules/vendor:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.6.0
+
+Node version: 
+  11.6.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.npmjs.org/sanity-plugin-dashboard-widget-structure-menu: Not found
+      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/@sanity/cli/vendor/yarn:65357:18)
+      at Request.self.callback (/usr/local/lib/node_modules/@sanity/cli/vendor/yarn:133185:22)
+      at Request.emit (events.js:188:13)
+      at Request.<anonymous> (/usr/local/lib/node_modules/@sanity/cli/vendor/yarn:134168:10)
+      at Request.emit (events.js:188:13)
+      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/@sanity/cli/vendor/yarn:134088:12)
+      at Object.onceWrapper (events.js:276:13)
+      at IncomingMessage.emit (events.js:193:15)
+      at endReadableNT (_stream_readable.js:1129:12)
+      at process.internalTickCallback (internal/process/next_tick.js:72:19)
+
+npm manifest: 
+  {
+    "private": false,
+    "name": "yeomalt-studio",
+    "version": "1.0.0",
+    "author": "Scott Hurlow",
+    "scripts": {
+      "deploy": "npm run graphql-deploy && npm run sanity-deploy",
+      "format": "prettier-eslint --write \"**/*.js\" \"!node_modules/**\"",
+      "graphql-deploy": "sanity graphql deploy --playground",
+      "sanity-deploy": "sanity deploy",
+      "lint": "eslint .",
+      "start": "sanity start",
+      "build": "sanity build",
+      "now-build": "npm run build",
+      "now-dev": "npm run build",
+      "test": "sanity check"
+    },
+    "dependencies": {
+      "@sanity/base": "^0.142.2",
+      "@sanity/cli": "^0.142.2",
+      "@sanity/components": "^0.142.4",
+      "@sanity/core": "^0.142.4",
+      "@sanity/dashboard": "^0.142.2",
+      "@sanity/default-layout": "^0.142.4",
+      "@sanity/default-login": "^0.142.3",
+      "@sanity/desk-tool": "^0.142.4",
+      "prop-types": "^15.7.2",
+      "react": "^16.8.6",
+      "react-dom": "^16.8.6",
+      "react-icons": "^3.7.0",
+      "sanity-plugin-dashboard-widget-document-list": "0.0.8",
+      "sanity-plugin-dashboard-widget-netlify": "^1.0.1"
+    },
+    "devDependencies": {
+      "eslint": "^5.16.0",
+      "eslint-config-standard": "^12.0.0",
+      "eslint-config-standard-react": "^7.0.2",
+      "eslint-plugin-import": "^2.17.3",
+      "eslint-plugin-node": "^9.1.0",
+      "eslint-plugin-promise": "^4.1.1",
+      "eslint-plugin-react": "^7.13.0",
+      "eslint-plugin-standard": "^4.0.0",
+      "prettier-eslint-cli": "^5.0.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
