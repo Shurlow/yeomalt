@@ -4,7 +4,7 @@ const path = require(`path`)
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const ProjectPage = path.resolve(`./src/components/ProjectPage.js`)
+  const ProjectPage = path.resolve(`./src/templates/ProjectPage.js`)
 
   return graphql(`
     query {
