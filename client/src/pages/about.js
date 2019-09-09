@@ -21,10 +21,15 @@ const AboutPage = ({ data }, location) => {
             Yeomalt is a design studio located in Bellingham, Washington
             specializing in design process, and metal fabrication.
           </h2>
+          {/* <h2 id="blockquote">
+            <strong>Yeomalt is a design studio located in Bellingham, Washington
+            specializing in design process, and metal fabrication.</strong>
+          </h2> */}
           <figure className="kg-card kg-image-card kg-width-full">
             <img
               src={"https://media.giphy.com/media/4No3LjxxOrhEjuTI4G/giphy.gif"}
               className="kg-image"
+              alt="In process of building observation structure."
             />
             <figcaption>
               Observation Structure @ Arcadia Wildlife Sanctuary | Easthampton,

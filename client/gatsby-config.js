@@ -10,7 +10,7 @@ const siteConfig = {
   url: "http://yeomaltdesign.com",
   prefix: "/",
   author: "Scott Hurlow",
-  color: "yellow",
+  color: "#F5CB08",
   keywords: ["metal", "yeomalt"],
 }
 
