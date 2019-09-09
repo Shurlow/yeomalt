@@ -17,25 +17,28 @@ const siteConfig = {
 module.exports = {
   siteMetadata: {
     title: siteConfig.name,
+    shortName: siteConfig.shortName,
     author: siteConfig.author,
     description: siteConfig.description,
     siteUrl: siteConfig.url,
     keywords: siteConfig.keywords,
   },
   plugins: [
-    // {
-    //   resolve: 'gatsby-source-sanity',
-    //   options: {
-    //     projectId,
-    //     dataset,
-    //     token: process.env.SANITY_TOKEN,
-    //     watchMode: true,
-    //     overlayDrafts: true
-    //   }
-    // }
-    // {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-netlify`,
+    `gatsby-plugin-offline`,
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: "gatsby-source-sanity",
+      options: {
+        projectId,
+        dataset,
+        token: process.env.SANITY_TOKEN,
+        watchMode: true,
+        // overlayDrafts: true
+      },
+    },
     {
       resolve: `gatsby-plugin-postcss`,
       options: {
@@ -73,7 +76,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: siteConfig.color,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `static/yeomalt-icon.png`,
       },
     },
     {
@@ -82,9 +85,6 @@ module.exports = {
         username: "yeomalt",
       },
     },
-    `gatsby-plugin-netlify`,
-    `gatsby-plugin-offline`,
-    `gatsby-plugin-react-helmet`,
   ],
 }
 
