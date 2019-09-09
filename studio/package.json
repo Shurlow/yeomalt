@@ -3,6 +3,8 @@
   "name": "yeomalt-studio",
   "version": "1.0.0",
   "author": "Scott Hurlow",
+  "description": "Sanity.io studio CMS for the Yeomalt Design homepage.",
+  "license": "MIT",
   "scripts": {
     "deploy": "npm run graphql-deploy && npm run sanity-deploy",
     "format": "prettier-eslint --write \"**/*.js\" \"!node_modules/**\"",
