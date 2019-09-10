@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import BlockContent from "@sanity/block-content-to-react"
 // import Img from "gatsby-image"
@@ -14,7 +14,30 @@ const serializers = {
         <figcaption>{caption}</figcaption>
       </figure>
     ),
+    slideshow: ({ node: { title, slides } }) => {
+      console.log("slideshow")
+
+      return <Carousel images={slides} />
+    },
   },
+}
+
+const Carousel = ({ images }) => {
+  const [idx, setIdx] = useState(0)
+  const cycle = sawtoothIdx(idx, images.length)
+  const image = images[cycle]
+
+  return (
+    <figure className="kg-card kg-image-card" onClick={() => setIdx(idx + 1)}>
+      <img className="kg-image" src={image.asset.url} alt={`carousel ${idx}`} />
+    </figure>
+  )
+}
+
+function sawtoothIdx(x, n) {
+  const TWO_PI = Math.PI * 2
+  const phase = x % n !== 0 ? ((x * TWO_PI) / n) % TWO_PI : 0
+  return Math.round(2 * (phase / TWO_PI) * (n / 2))
 }
 
 export default function ProjectPage(props) {
@@ -25,7 +48,6 @@ export default function ProjectPage(props) {
     image,
     _rawBody,
   } = props.data.sanityProject
-  console.log(props)
   return (
     // const post = this.props.data.markdownRemark
 
