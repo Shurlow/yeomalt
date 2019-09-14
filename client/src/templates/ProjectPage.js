@@ -16,7 +16,6 @@ const serializers = {
     ),
     slideshow: ({ node: { title, slides } }) => {
       console.log("slideshow")
-
       return <Carousel images={slides} />
     },
   },
@@ -24,20 +23,18 @@ const serializers = {
 
 const Carousel = ({ images }) => {
   const [idx, setIdx] = useState(0)
-  const cycle = sawtoothIdx(idx, images.length)
-  const image = images[cycle]
+  const setNextIdx = () =>
+    idx === images.length - 1 ? setIdx(0) : setIdx(idx + 1)
 
   return (
-    <figure className="kg-card kg-image-card" onClick={() => setIdx(idx + 1)}>
-      <img className="kg-image" src={image.asset.url} alt={`carousel ${idx}`} />
+    <figure className="kg-card kg-image-card" onClick={setNextIdx}>
+      <img
+        className="kg-image"
+        src={images[idx].asset.url}
+        alt={`carousel ${idx}`}
+      />
     </figure>
   )
-}
-
-function sawtoothIdx(x, n) {
-  const TWO_PI = Math.PI * 2
-  const phase = x % n !== 0 ? ((x * TWO_PI) / n) % TWO_PI : 0
-  return Math.round(2 * (phase / TWO_PI) * (n / 2))
 }
 
 export default function ProjectPage(props) {
@@ -49,8 +46,6 @@ export default function ProjectPage(props) {
     _rawBody,
   } = props.data.sanityProject
   return (
-    // const post = this.props.data.markdownRemark
-
     <Layout location={location} title={title}>
       <SEO title={title} description={title} />
       <header className="page-head">
