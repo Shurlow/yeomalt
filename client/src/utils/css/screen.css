@@ -57,16 +57,22 @@ body {
   }
 }
 
+.site-main {
+  margin-top: 2em;
+  margin-bottom: 6vw;
+}
+
 .page-head {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 13vw 0;
-  max-width: 70%;
-  min-height: 350px;
-  margin: auto;
-  text-align: center;
+  /* justify-content: center; */
+  width: 100%;
+  padding: 3vw 0;
+  /* max-width: 70%; */
+  /* min-height: 350px; */
+  /* margin: auto; */
+  /* text-align: center; */
 }
 
 .error-head {
@@ -410,6 +416,18 @@ body {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  max-width: 960px;
+  margin: auto;
+}
+
+.post-feed-header {
+  width: 80%;
+  text-align: center;
+}
+@media (min-width: 700px) {
+  .post-feed-header {
+    width: 60%;
+  }
 }
 
 .post-card {
@@ -473,7 +491,7 @@ body {
 .post-card-title {
   margin: 0;
   display: inline-block;
-  font-size: 2.4rem;
+  font-size: 2rem;
   max-width: 70%;
   text-align: center;
   transition: all 0.3s cubic-bezier(0.33, 0, 0.2, 1);
@@ -671,6 +689,47 @@ body {
   background: color(var(--color-border) l(+10%));
   box-shadow: #fff 0 0 0 5px;
   transform: rotate(45deg);
+}
+
+.carousel {
+  position: relative;
+}
+
+.carousel svg {
+  /* width: 50%; */
+}
+
+.carousel-left-button,
+.carousel-right-button {
+  position: absolute;
+  height: 100%;
+  width: 40%;
+  top: 0%;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.carousel-left-button {
+  left: 0px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.4),
+    20%,
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.carousel-right-button {
+  right: 0px;
+  justify-content: flex-end;
+  background: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.4),
+    20%,
+    rgba(0, 0, 0, 0)
+  );
 }
 
 /* .flex-projects {

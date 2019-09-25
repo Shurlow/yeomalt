@@ -10,7 +10,7 @@ import "../utils/css/screen.css"
 
 const ProjectCard = ({ title, date, image }) => (
   <Link to={`/${title.toLowerCase().replace(/%20| /g, "-")}`}>
-    <figure className="kg-card kg-image-card">
+    <figure className="kg-image-card">
       <h6>{title}</h6>
       <img className="kg-image" src={image.asset.url} alt="" />
       <figcaption>{`${date.toLocaleString("default", {
@@ -27,10 +27,10 @@ const ProjectsPage = ({ data }, location) => {
   return (
     <Layout title={title}>
       <SEO title="Projects" />
-      <header className="page-head">
-        <h2 className="page-head-title">Projects</h2>
-      </header>
       <article className="post-content page-template no-image">
+        {/* <header className="page-head">
+          <h2 className="page-head-title">Projects</h2>
+        </header> */}
         <div className="post-content-body flex-projects">
           {projects.map(({ node }) => (
             <ProjectCard key={node.id} {...node} date={new Date(node.date)} />

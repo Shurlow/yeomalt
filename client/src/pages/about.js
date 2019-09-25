@@ -17,15 +17,11 @@ const AboutPage = ({ data }, location) => {
 
       <article className="post-content page-template no-image">
         <div className="post-content-body">
-          <h2>
-            Yeomalt is a design studio located in Bellingham, Washington
-            specializing in design process, and metal fabrication.
-          </h2>
           {/* <h2 id="blockquote">
             <strong>Yeomalt is a design studio located in Bellingham, Washington
             specializing in design process, and metal fabrication.</strong>
           </h2> */}
-          <figure className="kg-card kg-image-card kg-width-full">
+          <figure className="kg-image-card kg-width-full">
             <img
               src={"https://media.giphy.com/media/4No3LjxxOrhEjuTI4G/giphy.gif"}
               className="kg-image"
@@ -36,6 +32,10 @@ const AboutPage = ({ data }, location) => {
               MA
             </figcaption>
           </figure>
+          <h4>
+            Yeomalt is a design studio located in Bellingham, Washington
+            specializing in design process, and metal fabrication.
+          </h4>
           <h3 id="dynamic-styles">Custom Metal</h3>
           <p>
             Billions upon billions a mote of dust suspended in a sunbeam radio

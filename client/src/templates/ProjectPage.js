@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { graphql } from "gatsby"
 import BlockContent from "@sanity/block-content-to-react"
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 // import Img from "gatsby-image"
 
 import Layout from "../components/Layout"
@@ -23,16 +24,25 @@ const serializers = {
 
 const Carousel = ({ images }) => {
   const [idx, setIdx] = useState(0)
-  const setNextIdx = () =>
-    idx === images.length - 1 ? setIdx(0) : setIdx(idx + 1)
+  // const nextIdx = idx === images.length - 1 ? 0 : idx + 1
 
   return (
-    <figure className="kg-card kg-image-card" onClick={setNextIdx}>
+    <figure className="kg-card kg-image-card carousel">
+      {idx > 0 && (
+        <div className="carousel-left-button" onClick={() => setIdx(idx - 1)}>
+          <FaChevronLeft size="3em" color="rgba(255,255,255,0.66)" />
+        </div>
+      )}
       <img
         className="kg-image"
         src={images[idx].asset.url}
         alt={`carousel ${idx}`}
       />
+      {idx < images.length - 1 && (
+        <div className="carousel-right-button" onClick={() => setIdx(idx + 1)}>
+          <FaChevronRight size="3em" color="rgba(255,255,255,0.66)" />
+        </div>
+      )}
     </figure>
   )
 }

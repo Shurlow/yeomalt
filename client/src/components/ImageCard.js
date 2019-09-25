@@ -1,8 +1,8 @@
 import React from "react"
-
+// ${ count % 3 === 0 && `post-card-large` }
 const ImageCard = ({ img, count, caption }) => (
   <article
-    className={`post-card ${count % 3 === 0 && `post-card-large`} with-image`}
+    className={`post-card  with-image`}
     style={{ backgroundImage: `url(${img})` }}
   >
     <div className="post-card-link" href="_blank">
