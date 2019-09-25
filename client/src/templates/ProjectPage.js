@@ -16,7 +16,6 @@ const serializers = {
       </figure>
     ),
     slideshow: ({ node: { title, slides } }) => {
-      console.log("slideshow")
       return <Carousel images={slides} />
     },
   },
@@ -62,12 +61,7 @@ export default function ProjectPage(props) {
         <h2 className="page-head-title">{title}</h2>
       </header>
       <article className="post-content">
-        {/* <header className="post-content-header">
-            <h1 className="post-content-title">{title}</h1>
-          </header> */}
-
         {description && <p class="post-content-excerpt">{description}</p>}
-
         {image && (
           <div className="post-content-image">
             <figure className="kg-card kg-image-card">

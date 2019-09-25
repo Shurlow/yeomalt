@@ -16,16 +16,10 @@ const Main = ({ data }, location) => {
   const imgChunk1 = data.allInstaNode.edges.slice(0, 4)
   const imgChunk2 = data.allInstaNode.edges.slice(4, 8)
   const imgChunk3 = data.allInstaNode.edges.slice(8)
-  console.log(data.allInstaNode.edges, imgChunk1, imgChunk2, imgChunk3)
-  // console.log(images)
-  // console.log(images[0].node.caption.replace(hashtagRegEx, " "))
 
   return (
     <Layout>
       <SEO title="Home" />
-      {/* <header className="page-head">
-        <h2 className="page-head-title">Recent Work</h2>
-      </header> */}
       <div className="post-feed">
         <ImageCardList images={imgChunk1} />
         <header className="page-head">
