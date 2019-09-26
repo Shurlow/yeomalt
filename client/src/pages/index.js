@@ -32,7 +32,7 @@ const Main = ({ data }, location) => {
         <header className="page-head">
           <h6 className="post-feed-header">
             <span>
-              We specialize in a functional aesthetic woven with exocit metals.
+              We specialize in a functional aesthetic woven with exotic metals.
             </span>{" "}
             <a
               href="mailto:studio@yeomaltdesign.com"
