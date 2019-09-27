@@ -1,16 +1,17 @@
-import createSchema from 'part:@sanity/base/schema-creator'
-import schemaTypes from 'all:part:@sanity/base/schema-type'
+import createSchema from "part:@sanity/base/schema-creator";
+import schemaTypes from "all:part:@sanity/base/schema-type";
 
-import blockContent from './blockContent'
-import blockText from './blockText'
-import companyInfo from './companyInfo'
-import figure from './figure'
-import project from './project'
-import siteSettings from './siteSettings'
-import slideshow from './slideshow'
+import blockContent from "./blockContent";
+import blockText from "./blockText";
+import companyInfo from "./companyInfo";
+import aboutContent from "./aboutContent";
+import figure from "./figure";
+import project from "./project";
+import siteSettings from "./siteSettings";
+import slideshow from "./slideshow";
 
 export default createSchema({
-  name: 'default',
+  name: "default",
   types: schemaTypes.concat([
     blockContent,
     blockText,
@@ -18,6 +19,7 @@ export default createSchema({
     figure,
     project,
     siteSettings,
-    slideshow
+    slideshow,
+    aboutContent
   ])
-})
+});

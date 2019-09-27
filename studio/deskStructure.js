@@ -1,27 +1,35 @@
-import S from '@sanity/desk-tool/structure-builder'
-import { MdBusiness, MdSettings, MdBrush } from 'react-icons/md'
+import S from "@sanity/desk-tool/structure-builder";
+import { MdBusiness, MdSettings, MdBrush, MdAssignment } from "react-icons/md";
 // import { FaFile } from 'react-icons/fa'
 
-const makeEditor = (name) => S.editor().id(name).schemaType(name).documentId(name)
+const makeEditor = name =>
+  S.editor()
+    .id(name)
+    .schemaType(name)
+    .documentId(name);
 
 const siteSettings = S.listItem()
-  .title('Site Settings')
-  .child(makeEditor('siteSettings'))
-  .icon(MdSettings)
+  .title("Site Settings")
+  .child(makeEditor("siteSettings"))
+  .icon(MdSettings);
 
 const companyInfo = S.listItem()
-  .title('Company Info')
-  .child(makeEditor('companyInfo'))
-  .icon(MdBusiness)
+  .title("Company Info")
+  .child(makeEditor("companyInfo"))
+  .icon(MdBusiness);
+
+const aboutContent = S.listItem()
+  .title("About Content")
+  .child(makeEditor("aboutContent"))
+  .icon(MdAssignment);
 
 const projects = S.listItem()
-  .title('Projects')
-  .schemaType('project')
-  .child(S.documentTypeList('project').title('Projects'))
-  .icon(MdBrush)
+  .title("Projects")
+  .schemaType("project")
+  .child(S.documentTypeList("project").title("Projects"))
+  .icon(MdBrush);
 
-export default () => S.list().title('Content').items([
-  siteSettings,
-  companyInfo,
-  projects, 
-])
+export default () =>
+  S.list()
+    .title("Content")
+    .items([siteSettings, companyInfo, aboutContent, projects]);

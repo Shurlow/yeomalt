@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { graphql, StaticQuery, Link } from "gatsby"
 
 import Layout from "../components/Layout"
@@ -12,44 +12,33 @@ const hashtagRegEx = /\B(#[a-zA-Z0-9]+\b|\.)(?!;)/g
 
 //TODO: switch to staticQuery, get rid of comments, remove unnecessary components, export as draft template
 const Main = ({ data }, location) => {
-  // const { title, description } = data.site.siteMetadata
   const imgChunk1 = data.allInstaNode.edges.slice(0, 4)
   const imgChunk2 = data.allInstaNode.edges.slice(4, 8)
   const imgChunk3 = data.allInstaNode.edges.slice(8)
+  const copy1 = data.sanityAboutContent.homepageCopy1
+  const copy2 = data.sanityAboutContent.homepageCopy2
 
   return (
     <Layout>
       <SEO title="Home" />
       <div className="post-feed">
         <ImageCardList images={imgChunk1} />
-        <header className="page-head">
-          <h6 className="post-feed-header">
-            Custom metal fabrication based in Bellingham Washington.{" "}
-            <Link to={`/projects`}>View projects.</Link>
-          </h6>
-        </header>
+        <CopyInsert text={copy1} link={<ProjectsLink />} />
         <ImageCardList images={imgChunk2} />
-        <header className="page-head">
-          <h6 className="post-feed-header">
-            <span>
-              We specialize in a functional aesthetic woven with exotic metals.
-            </span>{" "}
-            <a
-              href="mailto:studio@yeomaltdesign.com"
-              title="Email"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Contact us
-            </a>{" "}
-            <span>for more information.</span>
-          </h6>
-        </header>
+        <CopyInsert text={copy2} link={<EmailLink />} />
         <ImageCardList images={imgChunk3} />
       </div>
     </Layout>
   )
 }
+
+const CopyInsert = ({ text, link }) => (
+  <header className="page-head">
+    <h6 className="post-feed-header">
+      {text} {link}
+    </h6>
+  </header>
+)
 
 const ImageCardList = ({ images }) =>
   images.map((image, i) => (
@@ -64,15 +53,31 @@ const ImageCardList = ({ images }) =>
     />
   ))
 
-// site {
-//   siteMetadata {
-//     title
-//     description
-//     shortName
-//   }
-// }
+const EmailLink = () => (
+  <Fragment>
+    <a
+      href="mailto:studio@yeomaltdesign.com"
+      title="Email"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Contact us
+    </a>{" "}
+    <span>for more information.</span>
+  </Fragment>
+)
+
+const ProjectsLink = () => <Link to={`/projects`}>View projects.</Link>
+
 const indexQuery = graphql`
   query {
+    sanityAboutContent {
+      id
+      homepageCopy1
+      homepageCopy2
+      aboutPageTagline
+      aboutPageCopy
+    }
     allInstaNode(sort: { fields: [timestamp], order: DESC }) {
       edges {
         node {

@@ -188,6 +188,13 @@ body {
   opacity: 0.4;
 }
 
+.nav-current {
+  /* text-decoration: underline; */
+  /* color: var(--color-primary); */
+  /* border-bottom: 2px solid rgba(245, 203, 8); */
+  /* opacity: 0.4; */
+}
+
 .nav-current a,
 .site-head a:hover {
   text-decoration: none;
