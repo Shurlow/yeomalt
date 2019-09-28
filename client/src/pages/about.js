@@ -25,7 +25,7 @@ const AboutPage = ({ data }, location) => {
         <div className="post-content-body">
           <figure className="kg-image-card kg-width-full relative">
             <Img fluid={aboutPageImage.asset.fluid} />
-            <h2>{aboutPageTagline}</h2>
+            <h2 className="left">{aboutPageTagline}</h2>
           </figure>
           <BlockContent body={_rawAboutPageCopy} />
           {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/ts0d7I6m7GE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
