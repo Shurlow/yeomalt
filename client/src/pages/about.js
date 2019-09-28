@@ -47,7 +47,7 @@ const indexQuery = graphql`
       aboutPageTagline
       aboutPageImage {
         asset {
-          fluid(maxWidth: 700) {
+          fluid(maxWidth: 900) {
             ...GatsbySanityImageFluid
           }
         }

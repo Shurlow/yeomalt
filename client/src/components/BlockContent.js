@@ -2,6 +2,9 @@ import React from "react"
 import Slider from "react-slick"
 import BlockContent from "@sanity/block-content-to-react"
 
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+
 export default function CustomBlockContent({ body }) {
   return (
     <BlockContent
