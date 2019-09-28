@@ -6,6 +6,8 @@ import SEO from "../components/SEO"
 import ImageCard from "../components/ImageCard"
 
 // import "../utils/global.scss"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 import "../utils/normalize.css"
 import "../utils/css/screen.css"
 const hashtagRegEx = /\B(#[a-zA-Z0-9]+\b|\.)(?!;)/g
@@ -75,8 +77,6 @@ const indexQuery = graphql`
       id
       homepageCopy1
       homepageCopy2
-      aboutPageTagline
-      aboutPageCopy
     }
     allInstaNode(sort: { fields: [timestamp], order: DESC }) {
       edges {

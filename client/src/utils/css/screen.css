@@ -14,7 +14,7 @@ production stylesheet in assets/built/screen.css using gulp dev
 @import "components/grid.css";
 @import "components/tables.css";
 @import "components/forms.css";
-@import "components/buttons.css";
+/* @import "components/buttons.css"; */
 @import "components/actions.css";
 @import "components/hamburger.css";
 @import "components/animations.css";
@@ -698,15 +698,46 @@ body {
   transform: rotate(45deg);
 }
 
-.carousel {
+.relative {
+  position: relative;
+}
+
+.slick-track div.slick-slide {
+  display: flex;
+  justify-content: center;
+}
+
+.slick-slide .kg-image {
+  width: unset !important;
+  max-width: 100%;
+  max-height: 440px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: var(--color-base) !important;
+}
+
+.kg-image-card h2 {
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  font-size: 1.8em;
+  padding: 6rem;
+  color: white;
+  font-family: "Sorts Mill Goudy";
+  text-align: left;
+}
+
+/* .carousel {
   position: relative;
 }
 
 .carousel svg {
   /* width: 50%; */
-}
+/* }  */
 
-.carousel-left-button,
+/* .carousel-left-button,
 .carousel-right-button {
   position: absolute;
   height: 100%;
@@ -716,9 +747,9 @@ body {
   display: flex;
   align-items: center;
   cursor: pointer;
-}
+} */
 
-.carousel-left-button {
+/* .carousel-left-button {
   left: 0px;
   background: linear-gradient(
     to right,
@@ -737,7 +768,7 @@ body {
     20%,
     rgba(0, 0, 0, 0)
   );
-}
+} */
 
 /* .flex-projects {
   display: flex;

@@ -1,50 +1,10 @@
-import React, { useState } from "react"
+import React from "react"
 import { graphql } from "gatsby"
-import BlockContent from "@sanity/block-content-to-react"
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 // import Img from "gatsby-image"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
-
-const serializers = {
-  types: {
-    figure: ({ node: { asset, alt, caption } }) => (
-      <figure className="kg-card kg-image-card">
-        <img className="kg-image" src={asset.url} alt={alt || ""} />
-        <figcaption>{caption}</figcaption>
-      </figure>
-    ),
-    slideshow: ({ node: { title, slides } }) => {
-      return <Carousel images={slides} />
-    },
-  },
-}
-
-const Carousel = ({ images }) => {
-  const [idx, setIdx] = useState(0)
-  // const nextIdx = idx === images.length - 1 ? 0 : idx + 1
-
-  return (
-    <figure className="kg-card kg-image-card carousel">
-      {idx > 0 && (
-        <div className="carousel-left-button" onClick={() => setIdx(idx - 1)}>
-          <FaChevronLeft size="3em" color="rgba(255,255,255,0.66)" />
-        </div>
-      )}
-      <img
-        className="kg-image"
-        src={images[idx].asset.url}
-        alt={`carousel ${idx}`}
-      />
-      {idx < images.length - 1 && (
-        <div className="carousel-right-button" onClick={() => setIdx(idx + 1)}>
-          <FaChevronRight size="3em" color="rgba(255,255,255,0.66)" />
-        </div>
-      )}
-    </figure>
-  )
-}
+import BlockContent from "../components/BlockContent"
 
 export default function ProjectPage(props) {
   const {
@@ -79,14 +39,7 @@ export default function ProjectPage(props) {
               /> */}
           </div>
         )}
-
-        <BlockContent
-          blocks={_rawBody}
-          serializers={serializers}
-          // imageOptions={{ w: 320, h: 240, fit: 'max' }}
-          // projectId="myprojectid"
-          // dataset="projects"
-        />
+        <BlockContent body={_rawBody} />
 
         <footer className="post-content-footer"></footer>
       </article>

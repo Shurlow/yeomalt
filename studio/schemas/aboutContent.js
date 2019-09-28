@@ -9,6 +9,11 @@ export default {
   icon: MdBusiness,
   fields: [
     {
+      name: "Copy",
+      title: "Yeomalt Copy",
+      type: "string"
+    },
+    {
       name: "homepageCopy1",
       title: "Homepage Copy 1",
       type: "text",
@@ -21,6 +26,14 @@ export default {
       rows: 3
     },
     {
+      name: "aboutPageImage",
+      title: "About Image",
+      type: "image",
+      options: {
+        hotspot: true
+      }
+    },
+    {
       name: "aboutPageTagline",
       title: "About Page Tagline",
       type: "text",
@@ -29,8 +42,7 @@ export default {
     {
       name: "aboutPageCopy",
       title: "About Page Copy",
-      type: "text",
-      rows: 5
+      type: "blockContent"
     }
   ]
 };
