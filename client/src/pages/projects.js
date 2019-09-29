@@ -13,7 +13,7 @@ const ProjectCard = ({ title, date, image }) => (
   <Link to={titleToLink(title)}>
     <figure className="kg-image-card">
       <h6>{title}</h6>
-      <Img fluid={image.asset.fluid} />
+      <Img fluid={{ ...image.asset.fluid, aspectRatio: 16 / 9 }} />
       <figcaption>{`${date.toLocaleString("default", {
         month: "long",
       })} - ${date.getFullYear()}`}</figcaption>

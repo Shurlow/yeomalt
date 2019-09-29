@@ -14,6 +14,7 @@ export default function ProjectPage(props) {
     image,
     _rawBody,
   } = props.data.sanityProject
+
   return (
     <Layout location={location} title={title}>
       <SEO title={title} description={title} />
@@ -25,19 +26,9 @@ export default function ProjectPage(props) {
         {image && (
           <div className="post-content-image">
             <figure className="kg-card kg-image-card">
-              {/* <img
-                className="kg-image"
-                src={image.asset.url}
-                alt={image.asset.caption || " "}
-              /> */}
-              <Img fluid={image.asset.fluid} />
+              <Img fluid={{ ...image.asset.fluid }} />
               <figcaption>{image.asset.caption || ""}</figcaption>
             </figure>
-            {/* <Img
-                className="kg-image"
-                fluid={thumbnail.childImageSharp.fluid}
-                alt={title}
-              /> */}
           </div>
         )}
         <BlockContent body={_rawBody} />
