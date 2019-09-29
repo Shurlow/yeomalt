@@ -1,6 +1,14 @@
 import React from "react"
 import { graphql, StaticQuery } from "gatsby"
 import Img from "gatsby-image"
+// import myConfiguredSanityClient from './sanityClient'
+// import imageUrlBuilder from '@sanity/image-url'
+
+// const builder = imageUrlBuilder(myConfiguredSanityClient)
+
+// function urlFor(source) {
+//   return builder.image(source)
+// }
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
@@ -17,6 +25,8 @@ const AboutPage = ({ data }, location) => {
     _rawAboutPageCopy,
   } = data.sanityAboutContent
 
+  const imageYOffset = aboutPageImage.hotspot.y
+
   return (
     <Layout title={siteTitle}>
       <SEO title="About" />
@@ -24,7 +34,10 @@ const AboutPage = ({ data }, location) => {
       <article className="post-content page-template no-image">
         <div className="post-content-body">
           <figure className="kg-image-card kg-width-full relative">
-            <Img fluid={aboutPageImage.asset.fluid} />
+            <Img
+              fluid={{ ...aboutPageImage.asset.fluid, aspectRatio: 16 / 9 }}
+              imgStyle={{ objectPosition: `0 calc(100% * ${imageYOffset})` }}
+            />
             <h2 className="left">{aboutPageTagline}</h2>
           </figure>
           <BlockContent body={_rawAboutPageCopy} />
@@ -48,8 +61,12 @@ const indexQuery = graphql`
       aboutPageImage {
         asset {
           fluid(maxWidth: 900) {
+            aspectRatio
             ...GatsbySanityImageFluid
           }
+        }
+        hotspot {
+          y
         }
       }
       _rawAboutPageCopy(resolveReferences: { maxDepth: 10 })

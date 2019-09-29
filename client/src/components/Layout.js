@@ -1,11 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql, StaticQuery, Link } from "gatsby"
 
 const Header = ({ name, toggleNav, setToggleNav }) => (
   <header className="site-head">
     <div className="site-head-container">
       <button
-        className="nav-burger clear-button"
+        className={`nav-burger clear-button ${toggleNav ? "white" : ""}`}
         href="#"
         onClick={() => setToggleNav(!toggleNav)}
       >
@@ -23,7 +23,7 @@ const Header = ({ name, toggleNav, setToggleNav }) => (
       <nav id="swup" className="site-head-left">
         <ul className="nav" role="menu">
           <li
-            className={`${typeof window !== `undefined` &&
+            className={`${typeof window !== "undefined" &&
               window.location.pathname === "/" &&
               "nav-current"}`}
             role="menuitem"
@@ -31,7 +31,7 @@ const Header = ({ name, toggleNav, setToggleNav }) => (
             <Link to={`/`}>Home</Link>
           </li>
           <li
-            className={`${typeof window !== `undefined` &&
+            className={`${typeof window !== "undefined" &&
               window.location.pathname === "/about" &&
               "nav-current"}`}
             role="menuitem"
@@ -39,17 +39,17 @@ const Header = ({ name, toggleNav, setToggleNav }) => (
             <Link to={`/about`}>About</Link>
           </li>
           <li
-            className={`${typeof window !== `undefined` &&
+            className={`${typeof window !== "undefined" &&
               window.location.pathname === "/projects" &&
               "nav-current"}`}
             role="menuitem"
           >
-            <Link to={`/projects`}>Projects</Link>
+            <Link to="/projects">Projects</Link>
           </li>
         </ul>
       </nav>
       <div className="site-head-center">
-        <Link className="site-head-logo" to={`/`}>
+        <Link className="site-head-logo" to="/">
           <span className="site-head-header">{name}</span>
         </Link>
       </div>
@@ -79,7 +79,7 @@ const Header = ({ name, toggleNav, setToggleNav }) => (
 
 const Footer = ({ title }) => (
   <footer className="site-foot">
-    &copy; {new Date().getFullYear()} <Link to={`/`}>{title}</Link> &mdash; Made
+    &copy; {new Date().getFullYear()} <Link to="/">{title}</Link> &mdash; Made
     with 💛In Bellingham, Wa
     {/* <p>
           Site by {' '}
@@ -96,7 +96,7 @@ const Footer = ({ title }) => (
 
 const Layout = ({ data, children }) => {
   const { title, shortName } = data.site.siteMetadata
-  const [toggleNav, setToggleNav] = React.useState(false)
+  const [toggleNav, setToggleNav] = useState(false)
 
   return (
     <div className={`site-wrapper ${toggleNav ? `site-head-open` : ``}`}>

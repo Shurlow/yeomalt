@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-// import Img from "gatsby-image"
+import Img from "gatsby-image"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
@@ -25,11 +25,12 @@ export default function ProjectPage(props) {
         {image && (
           <div className="post-content-image">
             <figure className="kg-card kg-image-card">
-              <img
+              {/* <img
                 className="kg-image"
                 src={image.asset.url}
                 alt={image.asset.caption || " "}
-              />
+              /> */}
+              <Img fluid={image.asset.fluid} />
               <figcaption>{image.asset.caption || ""}</figcaption>
             </figure>
             {/* <Img
@@ -55,7 +56,9 @@ export const pageQuery = graphql`
       date
       image {
         asset {
-          url
+          fluid(maxWidth: 900) {
+            ...GatsbySanityImageFluid
+          }
         }
       }
       _rawBody(resolveReferences: { maxDepth: 10 })

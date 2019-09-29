@@ -33,7 +33,7 @@ const Main = ({ data }, location) => {
 }
 
 const CopyInsert = ({ text, link }) => (
-  <header className="page-head">
+  <header className="page-head homepage-copy">
     <h6 className="post-feed-header">
       {text} {link}
     </h6>

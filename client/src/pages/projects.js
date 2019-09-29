@@ -1,18 +1,19 @@
 import React from "react"
 import { graphql, StaticQuery, Link } from "gatsby"
-// import Img from "gatsby-image"
+import Img from "gatsby-image"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
+import { titleToLink } from "../utils/links"
 
 import "../utils/normalize.css"
 import "../utils/css/screen.css"
 
 const ProjectCard = ({ title, date, image }) => (
-  <Link to={`/${title.toLowerCase().replace(/%20| /g, "-")}`}>
+  <Link to={titleToLink(title)}>
     <figure className="kg-image-card">
       <h6>{title}</h6>
-      <img className="kg-image" src={image.asset.url} alt="" />
+      <Img fluid={image.asset.fluid} />
       <figcaption>{`${date.toLocaleString("default", {
         month: "long",
       })} - ${date.getFullYear()}`}</figcaption>
@@ -28,9 +29,6 @@ const ProjectsPage = ({ data }, location) => {
     <Layout title={title}>
       <SEO title="Projects" />
       <article className="post-content page-template no-image">
-        {/* <header className="page-head">
-          <h2 className="page-head-title">Projects</h2>
-        </header> */}
         <div className="post-content-body flex-projects">
           {projects.map(({ node }) => (
             <ProjectCard key={node.id} {...node} date={new Date(node.date)} />
@@ -56,7 +54,9 @@ const indexQuery = graphql`
           date
           image {
             asset {
-              url
+              fluid(maxWidth: 700) {
+                ...GatsbySanityImageFluid
+              }
             }
           }
           body {

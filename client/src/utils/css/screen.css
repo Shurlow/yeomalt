@@ -66,7 +66,7 @@ body {
 }
 
 .site-main {
-  margin-top: 2em;
+  margin-top: 3vw;
   margin-bottom: 6vw;
 }
 
@@ -316,6 +316,12 @@ body {
   left: 0;
   z-index: 9999;
   padding: 12px 12px 12px 0;
+  background-color: var(--color-bg);
+}
+
+.site-head-open .nav-burger {
+  background-color: white;
+  transition: background 0.5s ease-out;
 }
 
 @media (max-width: 850px) {
@@ -467,8 +473,18 @@ body {
 @media (max-width: 700px) {
   .post-card {
     flex: 1 1 100%;
-    height: 70vw;
+    height: 88vw;
   }
+  .post-card.post-card.with-image {
+    margin-bottom: 3rem;
+  }
+
+  .homepage-copy {
+    margin-top: -3rem;
+  }
+  /* .post-card.post-card.with-image:nth-child(4n) {
+    margin-bottom: 0;
+  } */
 }
 
 .post-card-large {
@@ -589,6 +605,7 @@ body {
   text-align: center;
   opacity: 0.5;
 }
+
 @media (max-width: 500px) {
   .post-content-excerpt {
     font-size: 1.8rem;
@@ -747,6 +764,20 @@ body {
   color: white;
   font-family: "Sorts Mill Goudy";
   text-align: left !important;
+}
+
+@media (max-width: 500px) {
+  .kg-image-card h2 {
+    font-size: 1em;
+    padding: 2rem;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 900px) {
+  .kg-image-card h2 {
+    font-size: 1.4em;
+    padding: 4rem;
+  }
 }
 
 /* .carousel {

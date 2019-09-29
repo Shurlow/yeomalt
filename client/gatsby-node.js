@@ -1,4 +1,7 @@
-const path = require(`path`)
+// import { path } from 'fs'
+const path = require("path")
+const { titleToLink } = require("./src/utils/links")
+// import { titleToLink } from './src/utils/links'
 // const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ graphql, actions }) => {
@@ -35,23 +38,18 @@ exports.createPages = ({ graphql, actions }) => {
         throw result.errors
       }
 
-      const projects = result.data.allSanityProject.edges
+      const projects = result.data.allSanityProject.edges.map(
+        ({ node }) => node
+      )
 
-      projects.forEach((project, index) => {
-        const previous =
-          index === projects.length - 1 ? null : projects[index + 1].node
-        const next = index === 0 ? null : projects[index - 1].node
-
-        const path = project.node.title.toLowerCase().replace(/%20| /g, "-")
+      projects.forEach(({ title, id }, i) => {
+        const previous = projects[i + 1] || null
+        const next = projects[i - 1] || null
 
         createPage({
-          path,
+          path: titleToLink(title),
           component: ProjectPage,
-          context: {
-            id: project.node.id,
-            previous,
-            next,
-          },
+          context: { id, previous, next },
         })
       })
     })
