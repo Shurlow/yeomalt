@@ -25,7 +25,7 @@ const AboutPage = ({ data }, location) => {
     _rawAboutPageCopy,
   } = data.sanityAboutContent
 
-  const imageYOffset = aboutPageImage.hotspot.y
+  const imageYOffset = aboutPageImage.hotspot || {}
 
   return (
     <Layout title={siteTitle}>
@@ -36,7 +36,7 @@ const AboutPage = ({ data }, location) => {
           <figure className="kg-image-card kg-width-full relative">
             <Img
               fluid={{ ...aboutPageImage.asset.fluid, aspectRatio: 16 / 9 }}
-              imgStyle={{ objectPosition: `0 calc(100% * ${imageYOffset})` }}
+              imgStyle={{ objectPosition: `0 calc(100% * ${imageYOffset.y})` }}
             />
             <h2 className="left">{aboutPageTagline}</h2>
           </figure>
