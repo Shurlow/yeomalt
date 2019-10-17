@@ -41,6 +41,15 @@ const AboutPage = ({ data }, location) => {
             <h2 className="left">{aboutPageTagline}</h2>
           </figure>
           <BlockContent body={_rawAboutPageCopy} />
+          <div id="contact">
+            <h4>Contact Us</h4>
+            <p>
+              If you have any questions or would like a quote please send us an
+              email or text:
+            </p>
+            <p>(206) 123-4567</p>
+            <p>studio@yeomaltdesign.com</p>
+          </div>
           {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/ts0d7I6m7GE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
         </div>
       </article>

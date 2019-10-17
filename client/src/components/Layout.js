@@ -82,16 +82,8 @@ const Footer = ({ title }) => (
   <footer className="site-foot">
     &copy; {new Date().getFullYear()} <Link to="/">{title}</Link> &mdash; Made
     with 💛In Bellingham, Wa
-    {/* <p>
-          Site by {' '}
-          <a
-            href="https://github.com/Shurlow"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Scott Hurlow
-        </a>
-        </p> */}
+    <br />
+    <Link to={`/about#contact`}>Contact Us</Link>
   </footer>
 )
 
