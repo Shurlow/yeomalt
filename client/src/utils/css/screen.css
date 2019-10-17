@@ -51,6 +51,12 @@ body {
   padding: 3vw;
   min-height: 100vh;
 }
+
+.site-main {
+  margin-top: 3vw;
+  margin-bottom: 6vw;
+}
+
 @media (max-width: 850px) {
   .site-wrapper {
     padding: 6vw;
@@ -63,24 +69,18 @@ body {
   .slick-next {
     right: 15px;
   }
-}
-
-.site-main {
-  margin-top: 3vw;
-  margin-bottom: 6vw;
+  .site-main {
+    margin-top: 6vw;
+    margin-bottom: 6vw;
+  }
 }
 
 .page-head {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
   width: 100%;
   padding: 3vw 0;
-  /* max-width: 70%; */
-  /* min-height: 350px; */
-  /* margin: auto; */
-  /* text-align: center; */
 }
 
 .error-head {
@@ -148,7 +148,6 @@ body {
 .site-head {
   position: relative;
   z-index: 300;
-  margin-top: -10px;
   font-size: 1.35rem;
 }
 
@@ -226,13 +225,11 @@ body {
 .site-head-logo {
   flex-shrink: 0;
   display: block;
-  padding: 10px;
   color: var(--color-base);
-  font-size: 3rem;
-  line-height: 26px;
+  font-size: 3.4rem;
   font-family: "Sorts Mill Goudy";
-  /* font-weight: 700; */
-  /* text-transform: uppercase; */
+  line-height: 24px;
+  padding-top: 8px;
   letter-spacing: 1px;
 }
 
@@ -315,7 +312,8 @@ body {
   position: absolute;
   left: 0;
   z-index: 9999;
-  padding: 12px 12px 12px 0;
+  height: 32px;
+  padding: 8px 8px 8px 0;
   background-color: var(--color-bg);
 }
 
@@ -334,7 +332,7 @@ body {
   .site-head-container {
     flex-direction: column;
     justify-content: flex-start;
-    height: 40px;
+    height: 32px;
     background: rgba(255, 255, 255, 0);
     z-index: -1;
     transition: all 0.4s ease-out;
