@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import { graphql, StaticQuery, Link } from "gatsby"
+import { FaInstagram, FaAt } from "react-icons/fa"
+import { MdMailOutline } from "react-icons/md"
 
 const Header = ({ name, toggleNav, setToggleNav }) => (
   <header className="site-head">
@@ -51,7 +53,6 @@ const Header = ({ name, toggleNav, setToggleNav }) => (
       <div className="site-head-center">
         <Link className="site-head-logo" to="/">
           {name}
-          {/* <span className="site-head-header">{name}</span> */}
         </Link>
       </div>
       <div className="site-head-right">
@@ -62,7 +63,7 @@ const Header = ({ name, toggleNav, setToggleNav }) => (
             target="_blank"
             rel="noopener noreferrer"
           >
-            Instagram
+            <FaInstagram size="1.6em" style={{ strokeWidth: "8px" }} />
           </a>
           <a
             href="mailto:studio@yeomaltdesign.com"
@@ -70,7 +71,7 @@ const Header = ({ name, toggleNav, setToggleNav }) => (
             target="_blank"
             rel="noopener noreferrer"
           >
-            Email
+            <MdMailOutline size="1.8em" />
           </a>
         </div>
       </div>

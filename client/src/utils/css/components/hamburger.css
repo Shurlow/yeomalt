@@ -31,7 +31,7 @@
 .hamburger-inner::after {
   position: absolute;
   width: 20px;
-  height: 1px;
+  height: 2px;
   background-color: color(var(--color-border) l(-20%));
   border-radius: 4px;
   transition: transform 0.15s ease;
