@@ -232,6 +232,7 @@ body {
   padding-top: 8px;
   letter-spacing: 1px;
   border-bottom: 2px solid var(--color-primary);
+  min-height: 34px;
 }
 
 .site-head-logo:hover {
