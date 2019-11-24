@@ -17,7 +17,7 @@ export default {
                   apiId: "4f8ff7ba-cc9e-4d99-9cdf-f007fdb15104"
                 },
                 {
-                  buildHookId: "5d7744a54b6c7dca3a109091",
+                  buildHookId: "5d91346a25af733058380e92",
                   title: "Yeomalt Client",
                   name: "yeomalt-client",
                   apiId: "d0aeeca3-0738-4f29-bea1-ef8d4bc2d4e3"
